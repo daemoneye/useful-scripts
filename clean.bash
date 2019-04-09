@@ -5,7 +5,10 @@
 #
 
 echo "Removing old swap files"
-find ~ -name '*.swp' -exec rm -rfv {} \;
+find ~ -name '.*.swp' -exec rm -rfv {} \;
 
 echo "Removing hidden files that end in ~"
 find ~ -name '.*~' -exec rm -rfv {} \;
+
+echo "Removing files that end in ~"
+find ~ -name '*~' -exec rm -rfv {} \;
