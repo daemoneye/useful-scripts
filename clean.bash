@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# Shell script to clean any old swap and temp files left by vim in Slackware
+# Written by: Keane Wolter
+#
+
+echo "Removing old swap files"
+find ~ -name '*.swp' -exec rm -rfv {} \;
+
+echo "Removing files that end in .un~"
+find ~ -name '.*.un~' -exec rm -rfv {} \;
