@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 #
 # Shell script to clean any old swap and temp files left by vim in Slackware
 # Written by: Keane Wolter
