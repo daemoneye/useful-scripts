@@ -12,3 +12,6 @@ find ~ -name '.*~' -exec rm -rfv {} \;
 
 echo "Removing files that end in ~"
 find ~ -name '*~' -exec rm -rfv {} \;
+
+echo "Clearning /tmp directory!"
+rm -rf /tmp/* 2> /dev/null
