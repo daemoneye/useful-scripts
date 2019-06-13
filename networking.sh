@@ -43,7 +43,5 @@ do
 	echo ""
 done
 
-echo ""
-
 echo "${RED}${BACK_YELLOW}Routing Information${DEFAULT}\n"
 netstat -r -n | tail +2
