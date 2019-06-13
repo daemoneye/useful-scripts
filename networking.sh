@@ -1,10 +1,21 @@
 #!/usr/bin/env sh
 
+# Text color
 RED="\e[31m"
 GREEN="\e[32m"
 BLUE="\e[34m"
 YELLOW="\e[33m"
-DEFAULT="\e[39m"
+
+# Background Color
+BACK_RED="\e[41m"
+BACK_GREEN="\e[42m"
+BACK_BLUE="\e[44m"
+BACK_YELLOW="\e[43m"
+
+#set defaults
+DEFAULT="\e[0m"
+
+echo "${RED}${BACK_YELLOW}IP Address Information${DEFAULT}\n"
 
 for each in `/sbin/ip -o link show | cut -d' ' -f2 | cut -d':' -f1 | grep -v lo`
 do
@@ -29,9 +40,10 @@ do
 	do
 		echo "${RED}\t$address${DEFAULT}"
 	done
+	echo ""
 done
 
 echo ""
 
-echo "Routing Information"
-netstat -r -n | grep -v lo | tail +2
+echo "${RED}${BACK_YELLOW}Routing Information${DEFAULT}\n"
+netstat -r -n | tail +2
