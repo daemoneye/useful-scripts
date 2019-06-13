@@ -1,16 +1,33 @@
 #!/usr/bin/env sh
 
+RED="\e[31m"
+GREEN="\e[32m"
+BLUE="\e[34m"
+YELLOW="\e[33m"
+DEFAULT="\e[39m"
+
 for each in `/sbin/ip -o link show | cut -d' ' -f2 | cut -d':' -f1 | grep -v lo`
 do
-	echo "$each IPv4 has the following addresses:"
+	case $each in
+		eth*)
+			COLOR=${GREEN}
+			;;
+		wlan*)
+			COLOR=${BLUE}
+			;;
+		*)
+			COLOR=${YELLOW}
+			;;
+	esac
+	echo "${COLOR}$each IPv4 has the following addresses:${DEFAULT}"
 	for address in `/sbin/ip addr show $each | grep "inet\b" | awk {'print $2'} | cut -d'/' -f1`
 	do
-		echo "\t$address"
+		echo "${RED}\t$address${DEFAULT}"
 	done
-	echo "$each IPv6 has the following addresses:"
+	echo "${COLOR}$each IPv6 has the following addresses:${DEFAULT}"
 	for address in `/sbin/ip addr show $each | grep "inet6" | awk {'print $2'} | cut -d'/' -f1`
 	do
-		echo "\t$address"
+		echo "${RED}\t$address${DEFAULT}"
 	done
 done
 
