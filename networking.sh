@@ -44,7 +44,9 @@ do
 done
 
 echo "${RED}${BACK_YELLOW}Routing Information${DEFAULT}\n"
-netstat -r -n | tail +2
+netstat -rn | tail +3 | awk '
+   BEGIN{printf("\033[31m%-16s\033[32m%-16s\033[33m%-16s\033[34m%-8s\033[35m%-4s\033[36m%-8s\033[37m%-5s\033[90m%-6s\n","Destination","Gateway","Genmask","Flags","MSS","Window","irtt","Iface")}
+   {printf("\033[31m%-16s\033[32m%-16s\033[33m%-16s\033[34m%-8s\033[35m%3s \033[36m%-8s\033[37m%-5s\033[90m%-6s\n",$1,$2,$3,$4,$5,$6,$7,$8)}'
 
 echo ""
 
