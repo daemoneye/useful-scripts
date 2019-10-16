@@ -36,7 +36,7 @@ do
 		echo "${RED}\t$address${DEFAULT}"
 	done
 	echo "${COLOR}$each IPv6 has the following addresses:${DEFAULT}"
-	for address in `/sbin/ip addr show $each | grep "inet6" | awk {'print $2'} | cut -d'/' -f1`
+	for address in `/sbin/ip addr show $each | grep -v temporary | grep inet6 | grep -v link | awk {'print $2'} | cut -d'/' -f1`
 	do
 		echo "${RED}\t$address${DEFAULT}"
 	done
