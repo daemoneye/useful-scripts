@@ -20,12 +20,15 @@ echo "${RED}${BACK_YELLOW}IP Address Information${DEFAULT}\n"
 for each in `/sbin/ip -o link show | cut -d' ' -f2 | cut -d':' -f1 | grep -v lo`
 do
 	case $each in
-		eth*)
+		# Known ethernet interfaces should be green
+		eth* | eno*)
 			COLOR=${GREEN}
 			;;
-		wlan*)
+		# Known wirelesss interfaces should be blue
+		wlan* | wlp2s*)
 			COLOR=${BLUE}
 			;;
+		# All other interfaces should be yellow
 		*)
 			COLOR=${YELLOW}
 			;;
