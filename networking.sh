@@ -51,6 +51,9 @@ netstat -rn | tail +3 | awk '
    BEGIN{printf("\033[31m%-16s\033[32m%-16s\033[33m%-16s\033[34m%-8s\033[35m%-4s\033[36m%-8s\033[37m%-5s\033[90m%-6s\n","Destination","Gateway","Genmask","Flags","MSS","Window","irtt","Iface")}
    {printf("\033[31m%-16s\033[32m%-16s\033[33m%-16s\033[34m%-8s\033[35m%3s \033[36m%-8s\033[37m%-5s\033[90m%-6s\n",$1,$2,$3,$4,$5,$6,$7,$8)}'
 
-echo ""
+echo "$DEFAULT"
+
+# echo "${RED}${BACK_YELLOW}IP addresses on LAN$DEFAULT"
+# cat /proc/net/arp | tail +2 | awk 'BEGIN {print "\033[31mIP address\t\t\033[32mHW address\t\t\033[33mDevice"} {print "\033[31m"$1"\t\t\033[32m"$4"\t\033[33m"$6}'
 
 exit 0
