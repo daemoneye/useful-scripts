@@ -15,6 +15,7 @@ then
 	exit 1
 fi
 
+# Set username of files to backup
 if [[ $# -eq 2 ]]
 then
 	user=$2
@@ -22,4 +23,4 @@ else
 	user=`whoami`
 fi
 
-find /home -user $user -exec xargs cp -t $1 {} \;
+cp -vr /home/$user/ $1
