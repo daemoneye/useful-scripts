@@ -22,4 +22,4 @@ else
 	user=`whoami`
 fi
 
-find /home -user $user -exec xargs cp -t $1
+find /home -user $user -exec xargs cp -t $1 {} \;
